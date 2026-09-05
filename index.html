@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="night" data-page-node-id="eqHxGubs8tgOIux8xI92gm">
+<head data-page-node-id="Urd49Wno5nmahWYelW5olu">
+  <meta charset="UTF-8" data-page-node-id="7myx3fID06QNkvhktPV6GU">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="qpnfSrPohMZjAtV9TZhSxf">
+  <title>枕梦索 · 留住每一夜的自己</title>
+  <meta name="description" content="一个私密的梦境日记，帮你留住梦境、联系感受、逐渐认识自己。" data-page-node-id="eECAQFVDb9Im3dfx7kPTb2">
+  <meta name="theme-color" content="#0B0826" data-page-node-id="ZrHsk87hNe3Nks6ZPiBBes">
+
+  <link rel="icon" type="image/png" sizes="256x256" href="assets/zhenmengsuo-logo-v1.png" data-page-node-id="BMIOjIiVnYEnuG309m5x1g">
+  <link rel="stylesheet" href="css/theme.css" data-page-node-id="YyN6sftEmQlEJMiWA40iZF">
+  <link rel="stylesheet" href="css/base.css" data-page-node-id="MW6J8JytA7aLRBdt2iRgAL">
+  <link rel="stylesheet" href="css/components.css" data-page-node-id="wyEdOwqhAylvw9iT5RUKQf">
+  <link rel="stylesheet" href="css/animations.css" data-page-node-id="qPhOmXznlfkgCQjZXlKTeF">
+  <link rel="stylesheet" href="css/pages.css" data-page-node-id="fUUvEc4V7XJSQBt3Zm584D">
+  <link rel="stylesheet" href="css/magic.css">
+</head>
+<body data-page-node-id="uLH6GkmqXq4eDAp8WLzUiG">
+  <!-- 星空粒子背景 -->
+  <canvas id="starfield" data-page-node-id="YOnvHTZt6CEMZSFcfqZjsB"></canvas>
+
+  <!-- 鼠标光晕 -->
+  <div class="cursor-glow" id="cursorGlow" data-page-node-id="aDPQPorKg7PZlMCS1OfC7g"></div>
+
+  <!-- 顶部窗口装饰条 -->
+  <div class="chrome-bar" data-page-node-id="sncmsrOYtop3qTi6ksNVPR">
+    <div class="chrome-dot" data-page-node-id="pUHVE84HDABoN2N13lPUCG"></div>
+    <div class="chrome-dot" data-page-node-id="RTGAcpnxuTF6eVXPDg3RBo"></div>
+    <div class="chrome-dot" data-page-node-id="cTUDG27nU6gmfUeon3HASX"></div>
+    <span class="chrome-title" id="chromeTitle" data-page-node-id="laAzaaUT0pn6QSKC6CxwWd">枕梦索</span>
+  </div>
+
+  <!-- 应用主区 -->
+  <div class="app" id="app" data-page-node-id="uwxjZmQc6EicHcVKa52RqJ">
+
+    <!-- ============ 首页 ============ -->
+    <section class="view is-active" data-view="landing" id="view-landing" data-page-node-id="SQrjpXmIlHbJBCP6kiTz7B">
+      <div class="landing" data-page-node-id="TXT0gX1CiCy9sS8HeGay9B">
+        <svg class="logo-filter-defs" width="0" height="0" aria-hidden="true" focusable="false">
+          <defs>
+            <filter id="landing-logo-cutout" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB">
+              <!-- Derive alpha from the original image: navy disappears, artwork stays opaque. -->
+              <feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  1.063 3.576 0.361 0 -0.55" result="cutout"/>
+              <feDropShadow in="cutout" dx="0" dy="0" stdDeviation="2" flood-color="#BBDFFF" flood-opacity="0.6"/>
+            </filter>
+          </defs>
+        </svg>
+        <div class="landing-logo anim-fade-up">
+          <img class="landing-logo-art" src="assets/logo.jpg" width="1254" height="1254" alt="枕梦索" data-page-node-id="FTgXRDMEmVusAtBNe8vkTT">
+        </div>
+
+        <h1 class="landing-title anim-fade-up delay-2" data-page-node-id="kDWqXu3FVifCgBdOGf3dNE">枕梦索</h1>
+
+        <p class="landing-tagline anim-fade-up delay-3" data-page-node-id="Vazy8jZea0uogJkAfpQUKd">— Where Sleep Meets Self —</p>
+
+        <div class="landing-actions anim-fade-up delay-4" data-page-node-id="G31Orips19d4GYJVcStAx4">
+          <button class="btn btn-primary btn-arrow" data-go="onboarding" data-page-node-id="lByOVlINwqzGkhR502dwLE">
+            开启我的梦境
+          </button>
+          <button class="btn btn-ghost" data-go="dashboard" data-page-node-id="vvGYFGI5zDgwYf4qrKcwWu">
+            直接进入 · 我的梦境
+          </button>
+        </div>
+
+        <div class="scroll-cue anim-fade-up delay-6" data-page-node-id="6RCpXYcvrbFAxTJj0hiutc">
+          <span data-page-node-id="RCyV9XHt7EWUSFe5vME5uy">向下滑动</span>
+        </div>
+      </div>
+
+      <!-- 向下滚动的内容 -->
+      <div class="landing-quote anim-fade-up delay-5" data-page-node-id="wb4UvlwWKTdCrEE5OgyoPO">
+        我们在清醒时编造故事，
+        在睡眠时却活成了真的自己。
+        <span class="landing-quote-author" data-page-node-id="Eh9vRPFeBm4cwklOoJA8DF">— 枕边寄语</span>
+      </div>
+
+      <div class="features stagger" data-page-node-id="4vVWSLEsJPfmODbuFJqoiQ">
+        <div class="feature-card card" data-page-node-id="8dIhBtJIb73MB6kJkwa2Uv">
+          <div class="feature-icon" data-page-node-id="AkzU5XAWC0BDeXcHIWCZES">🌙</div>
+          <h3 data-page-node-id="259C7lw02pD9swhSCVmkW4">留住每一夜</h3>
+          <p data-page-node-id="BOczVT3bRCWUsoAas9DTXQ">语音、文字、情绪，醒来时还能拼凑起那些闪着光的画面。</p>
+        </div>
+        <div class="feature-card card" data-page-node-id="WWXkG3lXHC7ugmv7v9HAKx">
+          <div class="feature-icon" data-page-node-id="mHGKD6JCyXuAXHMSrpZmPq">✦</div>
+          <h3 data-page-node-id="j78WSKXqObCGq2OMgqHWM3">看见自己</h3>
+          <p data-page-node-id="8aF7z2lFuSnSySiO7BEBQK">反复出现的人物、场景、颜色——留意它们与你日常感受的联系。</p>
+        </div>
+        <div class="feature-card card" data-page-node-id="SYST1oCLQ5Zs0lCdWlzlln">
+          <div class="feature-icon" data-page-node-id="N7SMpcQ5R19vWWpp7EwL96">🫧</div>
+          <h3 data-page-node-id="NjzZzomUbqVI9nBhNB9Rm2">在时间里漂流</h3>
+          <p data-page-node-id="TksWLwzPs2FzEQ6ZZYAEJ5">从满月到新月，每一次记录都是一次对话，安静的、只属于你的。</p>
+        </div>
+      </div>
+
+      <div class="text-center mt-12 mb-4" data-page-node-id="m5cnBiMpct8PLK7Sdoxyde">
+        <p class="eyebrow" data-page-node-id="ynQIQGbKxDMrOsNK8vVUa9">完完整整的私密</p>
+        <h2 class="h-2 mt-2" data-page-node-id="hXBtoW0IxKE3cZHhuG3wwZ">留在此处，慢慢回看</h2>
+        <p class="body-text" style="max-width: 480px; margin: 16px auto 32px;" data-page-node-id="fXCiGx365dU8E34QRDoW3z">
+          梦境保存在当前浏览器，不上传到我们的服务器。此版本尚未加密或设锁，清理浏览器数据会丢失记录，请定期导出备份。
+        </p>
+        <button class="btn btn-primary btn-arrow anim-glow" data-go="onboarding" data-page-node-id="kPFfJRnffQFJFsHAbE0jzF">
+          现在开始
+        </button>
+      </div>
+    </section>
+
+    <!-- ============ 引导流程 ============ -->
+    <section class="view" data-view="onboarding" id="view-onboarding" data-page-node-id="nz2Gk7CnwFVq7p06rxCPVi">
+      <button class="skip" data-skip data-page-node-id="iOkl1uBSW3BAJeJxfpSYyZ">跳过</button>
+
+      <div class="dream-progress" id="dreamProgress" data-page-node-id="wirFYLSc0iWrsllxx5eCUn">
+        <!-- JS 渲染 -->
+      </div>
+
+      <div class="onboarding" id="onboardingContainer" data-page-node-id="TDAYYzMT9IkKyfgtiUELgm">
+        <!-- 步骤由 JS 注入 -->
+      </div>
+    </section>
+
+    <!-- ============ 梦境殿堂 Dashboard ============ -->
+    <section class="view" data-view="dashboard" id="view-dashboard" data-page-node-id="pKohhNEh0rcXd7O6EooZyr">
+      <div class="dashboard" data-page-node-id="ifb3Wfj00HavrOPS6DRD5f">
+        <div class="greeting" data-page-node-id="UHhCgXxxyJj8B3km0xwL1H">
+          <p class="eyebrow" id="greetEyebrow" data-page-node-id="fjrQtUBPgvgzdmd1qUyV14">夜安</p>
+          <h1 id="greetHeading" data-page-node-id="SEEIjoJYZtuvfg4sHgNIJu">欢迎回来</h1>
+          <p class="greet-time" id="greetTime" data-page-node-id="pxdsR5xQX0njNddD57RYJy">夜色温柔，适合静下来</p>
+        </div>
+
+        <div class="hero-row" data-page-node-id="eUDmEAxunJIMm6vx0McjQP">
+          <div class="card moon-card" data-page-node-id="9xHYX56mGA9eGWZxCQE2sD">
+            <div class="moon-visual" id="moonVisual" data-page-node-id="zKEi9Fyh42VlcEQGTTfW7X">
+              <svg viewBox="0 0 120 120" width="120" height="120" data-page-node-id="vsxKCVXgQbMmSFstFDIoQQ">
+                <defs data-page-node-id="N0LXfUjll2seCgnHr7N4Yh">
+                  <radialGradient id="moonG" cx="40%" cy="35%" data-page-node-id="iDsU5N4aDow4oLZ0Za0p3r">
+                    <stop offset="0%" stop-color="#F5F2FF" data-page-node-id="x8pqWAjQaa4nbqzxWZInZo"/>
+                    <stop offset="60%" stop-color="#C7B8FF" data-page-node-id="Djdbqd4rL4sz07ugyLUwOQ"/>
+                    <stop offset="100%" stop-color="#7C5CFF" data-page-node-id="QPrDFYg09qsgM57dV1F3uG"/>
+                  </radialGradient>
+                  <radialGradient id="moonHalo" cx="50%" cy="50%" data-page-node-id="b5tPwheGM1EXFxEYpUu1RP">
+                    <stop offset="0%" stop-color="rgba(157,128,255,0.5)" data-page-node-id="TDMmhm1CdjjFWXsFglGw4Z"/>
+                    <stop offset="60%" stop-color="rgba(157,128,255,0.1)" data-page-node-id="hKoeRKJFExTh1fqEmN5Dhr"/>
+                    <stop offset="100%" stop-color="rgba(157,128,255,0)" data-page-node-id="JH0MUEXDloKx2V2vvOiPgG"/>
+                  </radialGradient>
+                </defs>
+                <circle cx="60" cy="60" r="56" fill="url(#moonHalo)" class="moon-halo" data-page-node-id="eEWDYx9oUwQhuTeiGDvl6J"/>
+                <path id="moonShape" d="M 60 16 A 44 44 0 1 0 60 104 A 32 44 0 1 1 60 16 Z"
+                      fill="url(#moonG)" filter="drop-shadow(0 0 14px rgba(199,184,255,0.6))" data-page-node-id="aoTyujZ1oROc4F51X6AWY2"/>
+                <circle cx="46" cy="48" r="2.5" fill="rgba(124,92,255,0.4)" data-page-node-id="KhNBOKC0G7yy73fBlkB1xm"/>
+                <circle cx="52" cy="68" r="1.5" fill="rgba(124,92,255,0.3)" data-page-node-id="p4cgC89MIP0wTDHIhpAe4J"/>
+                <circle cx="40" cy="76" r="1" fill="rgba(124,92,255,0.3)" data-page-node-id="B7aVprZQ4ayflrcotIppDH"/>
+              </svg>
+            </div>
+            <div class="moon-phase-label" id="moonPhase" data-page-node-id="D61Mv9S8mCI6oQPiS7KJPR">盈凸月</div>
+            <div class="moon-date" id="moonDate" data-page-node-id="ZmVpu0PF1tt1GHb4zO4hmf">九月五日 · 农历十四</div>
+          </div>
+
+          <div class="stats-row" data-page-node-id="huCPsrU1Id9dZCngeSv0Yp">
+            <div class="card stat-card" data-page-node-id="AKxDXfSf3KrvT5OrS5wh2v">
+              <span class="stat-label" data-page-node-id="ZX3n6k8IBSKtYeV4apXSqs">梦境记录</span>
+              <span class="stat-value" id="statDreams" data-page-node-id="qPJ3rNqrVTxAj4i2p8cYIm">0</span>
+              <span class="stat-trend" data-page-node-id="i70lBVhCybxhKDZQIrwDMB">连续 <span id="statStreak" data-page-node-id="juVTklor0JGV7DrZxe7tOK">0</span> 天</span>
+            </div>
+            <div class="card stat-card" data-page-node-id="Je8U8SKmY6xZRH82oiWNLj">
+              <span class="stat-label" data-page-node-id="BGdk81BVHKPF00tAAcAVMq">常见关键词</span>
+              <span class="stat-value" id="statTop" style="font-size: 22px;" data-page-node-id="GM1siFlzZwchmidWvNtUGi">—</span>
+              <span class="stat-trend" data-page-node-id="9EgMvM7ILX9ugihKxfm4WZ">出现 <span id="statTopCount" data-page-node-id="0LSgvvAcX1j1UgksAbLLqD">0</span> 次</span>
+            </div>
+            <div class="card stat-card" data-page-node-id="hBXdRPiIOuAWdfrVXJhE2r">
+              <span class="stat-label" data-page-node-id="Mq8WSkJzWl858IPR3HssFm">最近情绪</span>
+              <span class="stat-value" id="statMood" style="font-size: 22px;" data-page-node-id="BMwa6Vs29GAnbBODDXE4xp">—</span>
+              <span class="stat-trend" data-page-node-id="wWa7PDauWvpY23NeyYbhfz">来自最近一次记录</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-head" data-page-node-id="e3eiWI75YIBBQoWJ9ECQQe">
+          <h2 data-page-node-id="J5JGJPgJiRgTMOBGdWnDuY">最近的梦境</h2>
+          <a data-go="insights" data-page-node-id="lwHhhTPdH0yYzPMCajfZ07">查看分析 →</a>
+        </div>
+
+        <div class="dream-list stagger" id="dreamList" data-page-node-id="JFbHl4XrElTideCpRDXfhB">
+          <!-- JS 渲染 -->
+        </div>
+
+        <div class="section-head" data-page-node-id="8ykQEWUiF8OzABRkV7I5JO">
+          <h2 data-page-node-id="n8Cr69afTFFvwsM8jU71GY">今日的小提示</h2>
+        </div>
+        <div class="tip-card" data-page-node-id="jKA7Ut5ZXJEFt7P2jcCO7F">
+          <span class="tip-icon" data-page-node-id="bqbXHYGXpby3TWdRoJidZZ">✦</span>
+          <div data-page-node-id="PUgGp7VsjL9IqetOVNEfBc">
+            <p id="dailyTip" data-page-node-id="5nXF9sHpHPOa7juJrEeXFi">醒来时不要急着睁眼，先在黑暗里回想最后一个画面——它往往是最重要的那一片。</p>
+            <span class="tip-meta" data-page-node-id="H10BUAIgQrLXZxfIxp8zhP">来自枕梦索 · 每日一句</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 记录梦境 ============ -->
+    <section class="view" data-view="write" id="view-write" data-page-node-id="SC0Ol2VHGcIdVcKXAGbr3d">
+      <div class="write" data-page-node-id="bOE4pOTZTXb35K3zTmOFQ1">
+        <div class="write-header" data-page-node-id="oC3AjaGAS1c5YQxb59QnRG">
+          <button class="back-link" data-go="dashboard" data-page-node-id="TBZnL11ObCk9dLgsrrtqZD">返回</button>
+          <div class="flex gap-2" data-page-node-id="OLEdvdm2N9Qe4aGMvTiR36">
+            <button class="btn btn-ghost" id="writeDraft" data-page-node-id="4Pwxz912HhItt7udmnsx92">存为草稿</button>
+            <button class="btn btn-primary" id="writeSave" data-page-node-id="4zPaNqtXMv6EtxwlqoegAx">保存梦境</button>
+          </div>
+        </div>
+
+        <p id="writeStatus" class="dim" role="status" aria-live="polite"></p>
+        <input type="text" class="write-title-input" id="writeTitle" aria-label="梦境标题" maxlength="120"
+               placeholder="给这一夜起个名字…" data-page-node-id="gjzFGMech5dGKsngWRR8Ht">
+
+        <div class="write-canvas mt-4" data-page-node-id="KPS1lyEtWy8U957fWWV00x">
+          <textarea id="writeBody" aria-label="梦境内容" placeholder="闭上眼，你还记得什么？
+可能是颜色、气味、某个人说过的话，
+也可能是那种说不清的、漂浮的感觉。
+
+慢慢写，像在对自己说话。"></textarea>
+          <span class="write-count" id="writeCount" data-page-node-id="afn6q1zHQD0xGudf79BrDl"></span>
+        </div>
+
+        <!-- 语音拾梦 -->
+        <div class="voice-row" id="voiceRow" data-page-node-id="C3bwog4SXdu6XVRLetlcRi">
+          <button type="button" class="voice-orb" id="voiceOrb" aria-label="开始录音" aria-pressed="false" data-page-node-id="7ihmTEXYXYxcm47BZRVSPZ">
+            <span class="voice-orb-ring" data-page-node-id="fjwhvhYxb5nB1qIYJo7VKj"></span>
+            <span class="voice-orb-core" data-page-node-id="v8Ihuv3wg6D0ZQbFiVJpaA"></span>
+          </button>
+          <div class="voice-info" data-page-node-id="MqJyH7jbkxGOQzzE8v5i5F">
+            <div class="voice-label" id="voiceLabel" data-page-node-id="nfIyzyxsEyMWNFY3qvzn95">语音拾梦</div>
+            <div class="voice-hint" id="voiceHint" data-page-node-id="IMIUmT9ajLDrTmatK2SBQD">还迷糊的时候，说出来比写下来快</div>
+          </div>
+          <div class="voice-wave" id="voiceWave" aria-hidden="true" data-page-node-id="CeVMGnQXI8j90Yly8OVb5F">
+            <span data-page-node-id="ZRasSahPZRdTIKeH8Ni3VW"></span><span data-page-node-id="QU4LlaRBStJQGCcVMGvAfH"></span><span data-page-node-id="oODyNUyhqGidgMQ7jaZw91"></span><span data-page-node-id="OvNLIb7g6RR8dZrharO91p"></span><span data-page-node-id="3Rs6iCuL7EGXJaBvvnXMaf"></span>
+            <span data-page-node-id="beB7TW8UlQhUeWWFDFFw5O"></span><span data-page-node-id="CmEo6gsDPvrwVYyZPrePm4"></span><span data-page-node-id="nX7rBRQLDViOvEb3mfApdk"></span><span data-page-node-id="NoCEnTENXQvx6H1YGrw2Ee"></span><span data-page-node-id="ye4yS45PIKPGkew90hpVrF"></span>
+          </div>
+          <div class="voice-time" id="voiceTime" data-page-node-id="iuz7GuvPnJtWQWtixSrzyG"></div>
+        </div>
+        <div id="voiceClipArea" data-page-node-id="yQTPxN7HBCwkHj6RZfJT6K"></div>
+
+        <div class="write-controls" data-page-node-id="LaHb9ZjI1roY3fPwjcExdb">
+          <div class="control-group" data-page-node-id="92vH9P3FzLLSdRe34ZdfX7">
+            <label data-page-node-id="wTpRByksSPZ3RzUteScg9c">梦境清晰度</label>
+            <input type="range" min="0" max="100" value="50" class="slider" id="writeClarity" data-page-node-id="CQVeYZNj8caXsAmCzqcpNS">
+            <div class="clarity-value" data-page-node-id="TfQz9C8OkkpkThpFFATdbx">
+              <span data-page-node-id="HDq43vXpuFXb49m9GMDapU">模糊</span>
+              <span id="clarityValue" data-page-node-id="eClxEb1dmdASSndo3FGWzy">50%</span>
+              <span data-page-node-id="iULYjotfrwPDOhil9Exe8L">栩栩如生</span>
+            </div>
+          </div>
+          <div class="control-group" data-page-node-id="bMizsNS9Km8FQAYdXGZb88">
+            <label data-page-node-id="NWjIAuSuBbTX7tyZBgkvMc">入睡时刻 · 醒来时刻</label>
+            <div class="flex gap-3" data-page-node-id="ZPeuAkfJAkSeGotji7qT1k">
+              <input type="time" value="23:00" class="time-input" id="writeSleep" data-page-node-id="4PO4AkGvqhdOsjiDhz4Z8V">
+              <input type="time" value="07:00" class="time-input" id="writeWake" data-page-node-id="ZfxwHF5ufizIvTua1fw3Uv">
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6" data-page-node-id="o60ykKBK3k5ts3MJ5usfZw">
+          <label class="eyebrow" data-page-node-id="1QZbS7YDB1xdFNpv1R72wH">梦醒后的情绪</label>
+          <div class="mood-pills" id="moodPills" data-page-node-id="g0lJPG7ZniKVnzOtWNvLGc">
+            <span class="mood-pill" data-mood="calm" data-page-node-id="gcQBC4rWejSwBSrBJ1WepB">🌊 平静</span>
+            <span class="mood-pill" data-mood="joyful" data-page-node-id="wyItnbqqREEf9gvKo7xTJV">🌸 愉悦</span>
+            <span class="mood-pill" data-mood="anxious" data-page-node-id="JMdhBE7BDOfHrbheaHd5WB">🌪 焦虑</span>
+            <span class="mood-pill" data-mood="sad" data-page-node-id="G8Sb5CcWbBcY5RWlQHcVIw">🌧 忧伤</span>
+            <span class="mood-pill" data-mood="confused" data-page-node-id="GZe1WZTAp0Q0Nlv6QhLpHL">🌀 困惑</span>
+            <span class="mood-pill" data-mood="curious" data-page-node-id="XufHrRT6Gpq5nDEuCIbAwm">🦋 好奇</span>
+            <span class="mood-pill" data-mood="fearful" data-page-node-id="Qa24vKHXnoplDGRL4PKsic">⚡ 害怕</span>
+            <span class="mood-pill" data-mood="loved" data-page-node-id="KDwxCNdrTsUdHbuskozr40">💜 被爱</span>
+          </div>
+        </div>
+
+        <div class="mt-6" data-page-node-id="P6AeptQ6jBF6KyDVag1ZZe">
+          <label class="eyebrow" data-page-node-id="OH3FBE9sgWJMfNycDPZuGd">标签 · 给未来的你</label>
+          <div class="flex gap-2 mt-2" data-page-node-id="FslTxiBX0zLf38sstlEjsx">
+            <input type="text" id="writeTagInput" placeholder="添加一个关键词（按回车）"
+                   style="flex: 1; padding: 10px 16px; background: var(--card-1); border: 1px solid var(--border-soft); border-radius: var(--r-pill); color: var(--text-pure);" data-page-node-id="U1sNNhBbhCp8oubP5lMtju">
+          </div>
+          <div class="flex gap-2 mt-2" id="writeTags" style="flex-wrap: wrap;" data-page-node-id="FAFOGTFo7zF4ertxDsTlVv"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 梦境详情 ============ -->
+    <section class="view" data-view="detail" id="view-detail" data-page-node-id="xzdqaX2yqGzy11cQ57MEkO">
+      <div class="dream-detail" data-page-node-id="Dv4RLsMu906j9cyg9lbU6j">
+        <div class="flex-between" data-page-node-id="MIcXABAFIuUdeHFtD3nLdx">
+          <button class="back-link" data-go="dashboard" data-page-node-id="CKbltGt7dW0iYJONc4KDyB">回到殿堂</button>
+          <div class="flex gap-2" data-page-node-id="AkiCSSS4xfEIFqFl4XXpJr">
+            <button class="btn btn-ghost btn-sm" id="detailEdit" data-page-node-id="i18h1elrX5GXdiXlqDAXFF">继续补完</button>
+            <button class="btn btn-ghost btn-sm" id="detailDelete" style="color: var(--text-dim);" data-page-node-id="mkvwPEN40bTuSZJe6gED6X">让它散去</button>
+          </div>
+        </div>
+        <div class="dream-detail-head" data-page-node-id="4VmRVSjp0C59fpGsD3nFnK">
+          <div class="dream-detail-meta" id="detailMeta" data-page-node-id="NNlnYKTClKvTni1hRJWZbA"></div>
+          <h1 id="detailTitle" data-page-node-id="g1ziQ4h68LCz6oGV2fuMQu"></h1>
+          <div class="flex gap-2 mt-2" id="detailTags" data-page-node-id="yAm8ezPCTt1VWBJiXtFCuD"></div>
+        </div>
+        <div id="detailAudio" data-page-node-id="tE2WZS0R0DgpRrdLJLfHbp"></div>
+        <div class="dream-detail-body" id="detailBody" data-page-node-id="A5d1E8z7JeCnEDWg1A4a6I"></div>
+
+        <div class="related-dreams" data-page-node-id="8VAmzKAxne6AG68bBmkf4i">
+          <h3 data-page-node-id="zQXW8Uk97jEUwUCV9ATIlP">相似梦境</h3>
+          <div class="related-grid stagger" id="relatedDreams" data-page-node-id="xGOlRVLRFjLB2wCIaW9um2"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 自我发现 ============ -->
+    <section class="view" data-view="insights" id="view-insights" data-page-node-id="kAO6UOdAJ2dZOLixXkOUwd">
+      <div class="insights" data-page-node-id="yVuUrQC1OcAeoSIIB1fJuL">
+        <div class="view-header" data-page-node-id="5H2okIGa8tHLzavEXy1f8u">
+          <div data-page-node-id="qwPr0VBUQBjMv0H5yMf6pf">
+            <p class="eyebrow" data-page-node-id="XDnktN5Ctncsq3UqOQtcfq">Insights</p>
+            <h1 data-page-node-id="qUmueVUreNAmHiIDCE0lX8">看见自己</h1>
+          </div>
+        </div>
+
+        <p class="body-text" style="max-width: 580px;" data-page-node-id="kEP4hVZmyAkN6LkgVF323V">
+          把反复出现的片段放在一起，慢慢寻找自己的联想。这里展示本地记录与标签的简单统计，并不是 AI 解梦或心理判断。
+        </p>
+
+        <div class="insights-grid stagger" data-page-node-id="Yj1QBYCFlbqRgLNfF4Talu">
+          <div class="card heatmap-card" data-page-node-id="uotL0UgyOEiWCXCJ78MZ6N">
+            <p class="eyebrow" data-page-node-id="drar3ZLaHDR42VzQMYCZsG">记录 · 过去 90 天</p>
+            <h3 style="font-family: var(--font-display); font-size: 22px; font-weight: 500; margin-top: 8px;" data-page-node-id="w9GCmARAamkdoY6j64Ko3q">记录足迹</h3>
+            <div class="heatmap" id="heatmap" data-page-node-id="yWDtPzkTerc4VKGAdHICl6"></div>
+            <div class="heatmap-legend" data-page-node-id="TRPgwXMeVEoClLmhee1hYo">
+              <span data-page-node-id="zA2nygpbMRaTjiXU3Cx40U">少</span>
+              <div class="scale" data-page-node-id="WC1Bj4MKNsFFsmfCHVcb7G">
+                <span style="background: rgba(167,139,250,0.08);" data-page-node-id="GiEzqSXIgqoIR2m751pBR5"></span>
+                <span style="background: rgba(124,92,255,0.25);" data-page-node-id="YGHGv9AcUspqHyWHNJQ2S6"></span>
+                <span style="background: rgba(124,92,255,0.45);" data-page-node-id="9wJiVmnH9OVyJN36kPVo60"></span>
+                <span style="background: rgba(255,143,184,0.55);" data-page-node-id="MHDzAN4gV9PPSgo1GM8NeE"></span>
+                <span style="background: linear-gradient(135deg, var(--violet-core), var(--aurora-pink));" data-page-node-id="MPOHZBW3ZuWy4KfN3gL3Cu"></span>
+              </div>
+              <span data-page-node-id="oJupLkgr0zLXbfwXfTNrCW">多</span>
+            </div>
+          </div>
+
+          <div class="card topics-card" data-page-node-id="Og2FjU3WV7F376xXsAyWYh">
+            <p class="eyebrow" data-page-node-id="Ldj7vPeMaPOC2eydtW9htT">主题云</p>
+            <h3 style="font-family: var(--font-display); font-size: 22px; font-weight: 500; margin-top: 8px;" data-page-node-id="ar3GMUTMdeC7k71GVyujqG">反复出现的</h3>
+            <div class="topic-cloud" id="topicCloud" data-page-node-id="VbP0dr2hi2hgicXTWSW07n"></div>
+          </div>
+
+          <div class="card phases-card" data-page-node-id="y6cES8mQVELbGgN58MiU07">
+            <p class="eyebrow" data-page-node-id="yJzh7wypExuT0UcEZ5HeBn">月相 vs 梦境</p>
+            <h3 style="font-family: var(--font-display); font-size: 22px; font-weight: 500; margin-top: 8px;" data-page-node-id="t7inzKh37xfAzsJVFqb5wl">不同月相下的记录长度</h3>
+            <p class="dim" style="font-size: 12px; margin-top: 8px;">近似月相分组，仅比较文字长度，不代表因果关系。</p>
+            <div class="phases-chart" id="phasesChart" data-page-node-id="sgD2C1RaMiOAXMZK3OSSTA"></div>
+          </div>
+
+          <div class="card entities-card" data-page-node-id="pGFRlOhQQIYzm3oOXiOYJp">
+            <p class="eyebrow" data-page-node-id="EDnyg3QitMGyGGyGqdrHAr">其他意象</p>
+            <h3 style="font-family: var(--font-display); font-size: 22px; font-weight: 500; margin-top: 8px;" data-page-node-id="Q5XSVSf8u7hUYs8rfdJkzB">其他被记住的意象</h3>
+            <div class="entity-list" id="peopleList" data-page-node-id="yHY9D5T3ysQabULOEouK7M"></div>
+          </div>
+
+          <div class="card entities-card" data-page-node-id="tN8euzEfNasaBr7L6m8uaP">
+            <p class="eyebrow" data-page-node-id="cFCBUyhOBmDCCoWO4zBTKf">场景</p>
+            <h3 style="font-family: var(--font-display); font-size: 22px; font-weight: 500; margin-top: 8px;" data-page-node-id="k5rvurYFLBNIKi5GPy0T65">场景相关的标签</h3>
+            <div class="entity-list" id="placesList" data-page-node-id="AUm8b4gFZcFS0lRxZDqtiU"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 设置 ============ -->
+    <section class="view" data-view="settings" id="view-settings" data-page-node-id="pOswG0k312sASwHFiFbC9e">
+      <div class="settings" data-page-node-id="dvmVXymHrYdnT0EAM7YmRs">
+        <button class="back-link" data-go="dashboard" data-page-node-id="rOUmdOkoM8CYBwEhYXos3E">回到殿堂</button>
+        <div class="view-header mt-4" data-page-node-id="PGCd2OMG2VcB96A7oy1Ysg">
+          <div data-page-node-id="zM1iyDdpZzjSt5EbbJVsim">
+            <p class="eyebrow" data-page-node-id="LxksdKBghAuysSEqI4UFlj">Settings</p>
+            <h1 data-page-node-id="KKTuuFGC4Yh20JMkyXrekw">设置</h1>
+          </div>
+        </div>
+
+        <div class="card settings-section" data-page-node-id="Aq6wbqFEMbue2pH6tp55lG">
+          <h3 data-page-node-id="MGj224cYSEb12moxj79S8W">你的称谓</h3>
+          <p class="sec-desc" data-page-node-id="Zva2BlSDGJFxmN4crGmADC">网站用来称呼你的名字，会出现在问候和梦境页面里。</p>
+          <div class="input-wrap mt-2" data-page-node-id="TdnXlAAr9tHwElDn1LkPqf">
+            <input type="text" id="settingName" placeholder="你的名字" data-page-node-id="DqP1EpQOG6my76J2IbfHcy">
+          </div>
+          <button class="btn btn-primary mt-4" id="saveName" data-page-node-id="51pWBRvOjKdrRxTOK573xI">保存</button>
+        </div>
+
+        <div class="card settings-section" data-page-node-id="t87dYelSb0eU0QCOF3SzTv">
+          <h3 data-page-node-id="mH59zBWEyE1q9ceKKqFzO1">外观</h3>
+          <p class="sec-desc" data-page-node-id="BBF4nXksZCqkGuVQFY9OhS">夜空、深海、黎明——选一种此刻最贴近你心境的夜色。</p>
+          <div class="theme-chooser" data-page-node-id="ELESqNbxni2LJFEEyhoJ3T">
+            <div class="theme-chip is-active" data-theme="night" data-page-node-id="EgQQNJQ3ELDPBHQ6RVQp2q">
+              <div class="swatch" style="background: linear-gradient(135deg, #0B0826, #7C5CFF);" data-page-node-id="CWWmg1k33m8WEyqUJO9FjP"></div>
+              <span class="theme-name" data-page-node-id="YPJeuEny0eGKruyMHFVynp">子夜</span>
+            </div>
+            <div class="theme-chip" data-theme="deep" data-page-node-id="mYG29kXWNmihFNNzowHcsi">
+              <div class="swatch" style="background: linear-gradient(135deg, #03020F, #5B3FFF);" data-page-node-id="Igqb5GTNOIq2mbB2vSesyj"></div>
+              <span class="theme-name" data-page-node-id="Er7fN2TBdBNM2veRBazwm9">深海</span>
+            </div>
+            <div class="theme-chip" data-theme="dawn" data-page-node-id="XgzZsHYfgDeDDMXCWatwd0">
+              <div class="swatch" style="background: linear-gradient(135deg, #2A2455, #FFB89A);" data-page-node-id="a2KeiSAGRlguEhILGcd2D6"></div>
+              <span class="theme-name" data-page-node-id="MfDbSW8DWr3k3biJlocp00">黎明</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card settings-section" data-page-node-id="po6HG3pGw42PcMf6d0ffst">
+          <h3 data-page-node-id="AXCGmW4rAg0vZSfpc19TKw">提醒与陪伴</h3>
+          <p class="sec-desc" data-page-node-id="j4yMPLncBlYzpDQUtuvy6x">一些温柔的提示，会在你需要的时候出现。</p>
+          <div class="setting-row" data-page-node-id="1J5rqaECibzXzMVEhGKNjP">
+            <div class="set-info" data-page-node-id="nB3W7SO1pPC07AC5JehenI">
+              <div class="set-label" data-page-node-id="Q5RjRcMpCHOJrUwIxKH8mc">每日一句</div>
+              <div class="set-desc" data-page-node-id="5zqtUYHAJxRG1jwnprsS4r">每天打开应用时看到一句与梦相关的话</div>
+            </div>
+            <button type="button" role="switch" aria-label="每日一句" class="toggle is-on" data-toggle="dailyTip" data-page-node-id="1lJoXxfJNG71XyUerUWG3O"></button>
+          </div>
+          <div class="setting-row" data-page-node-id="AMe6buqMgLJDbsXSayTHHW">
+            <div class="set-info" data-page-node-id="nDuOfUIFiCweMd5JFZ9fUF">
+              <div class="set-label" data-page-node-id="yHyCBZIYb7daLZ6h84M3OW">写梦境提醒</div>
+              <div class="set-desc" data-page-node-id="SAMeDwD8s7AJYLEdBxcaFj">定时通知尚未接入；当前只保存作息偏好</div>
+            </div>
+            <div class="toggle" role="switch" aria-label="写梦境提醒尚未接入" aria-disabled="true" data-toggle="reminder" data-page-node-id="yG8H0dkQzaESRL7lVNnqqH"></div>
+          </div>
+          <div class="setting-row" data-page-node-id="w8DJOXLmhEP0pnbopuoIvJ">
+            <div class="set-info" data-page-node-id="aQAhML38hE2C4QbxaFJ0uh">
+              <div class="set-label" data-page-node-id="iaaAx3l0GqttvFcluOiteg">月相提示</div>
+              <div class="set-desc" data-page-node-id="QDOk05ZZBqtvsEwcW7vFUB">通知尚未接入；首页可查看近似月相</div>
+            </div>
+            <div class="toggle" role="switch" aria-label="月相通知尚未接入" aria-disabled="true" data-toggle="moonAlert" data-page-node-id="A0KKsOYgUYvuhgrCqH8oSn"></div>
+          </div>
+        </div>
+
+        <div class="card settings-section" data-page-node-id="4nR17ESxhq3eJSkDVlWeHI">
+          <h3 data-page-node-id="l40ukVsASC7QueZzWrWDK4">隐私</h3>
+          <p class="sec-desc" data-page-node-id="C3lV9FzgyKdykIIW2u9g3E">你的梦境只属于你。</p>
+          <div class="setting-row" data-page-node-id="KEfnPgSxop31zua13ksmcA">
+            <div class="set-info" data-page-node-id="JSfcx3izNBUUjcuOAiYgka">
+              <div class="set-label" data-page-node-id="2WJNDPCyXuCkgEnmZh2HRA">本地存储</div>
+              <div class="set-desc" data-page-node-id="CqRu1Z1czfyBbReXNe9itW">仅保存在此浏览器，尚未加密或设锁；清理数据会丢失记录</div>
+            </div>
+            <span class="badge badge-violet" data-page-node-id="1tkv0uyIVF4DbUZyNkvxEL">已开启</span>
+          </div>
+          <div class="setting-row" data-page-node-id="4ga1RQWkW986Oic86DvcC4">
+            <div class="set-info" data-page-node-id="MRECu6XWCl3BgJ4l9QrykJ">
+              <div class="set-label" data-page-node-id="NwB29uQsCwLuXBBFUPmIVJ">导出梦境</div>
+              <div class="set-desc" data-page-node-id="JVj0FNYk0Ar9iBFaUgbzVh">把所有的梦境保存为本地文件</div>
+            </div>
+            <button class="btn btn-ghost" id="exportBtn" data-page-node-id="m703MUjWrxCy2SJJXixibR">导出</button>
+          </div>
+          <div class="setting-row" data-page-node-id="Wr04fIqUrhVXjJ9j7IqfDs">
+            <div class="set-info" data-page-node-id="qFYTdSBVb64w9rjG7w5LPC">
+              <div class="set-label" data-page-node-id="7I7pYHRL7HsBxG9Z6dYuYG">清除所有梦境</div>
+              <div class="set-desc" data-page-node-id="vDnoQLfYDu0FYBE1tEANf5">永久删除本设备上的所有记录</div>
+            </div>
+            <button class="btn btn-ghost" id="clearBtn" style="color: var(--aurora-pink);" data-page-node-id="EHUgi6iB4qxzFlsMZfhk9u">清除</button>
+          </div>
+        </div>
+
+        <div class="text-center mt-12 mb-4" data-page-node-id="oVutZPYeL20qjZBIeFQXPg">
+          <p class="eyebrow" data-page-node-id="8QXUH7bCmKVqcVe3WJl5Mr">枕梦索 · v1.0</p>
+          <p class="dim" style="font-size: 13px; margin-top: 12px;" data-page-node-id="hmgS2WWuxhdrAdLaN5JEiy">
+            为每一个记得自己做过梦的人而作。
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- 底部导航（除引导和首页外显示） -->
+  <nav class="nav" id="bottomNav" style="display: none;" data-page-node-id="cV23uziCS6CWpbSbKZz4YD">
+    <button data-go="dashboard" title="殿堂" data-page-node-id="4n3C6redGhWSnNU5QxIet1">🌙</button>
+    <button data-go="write" title="记录" data-page-node-id="r10mYXKcYPGw3IGYAn9zzY">✒️</button>
+    <button data-go="insights" title="发现" data-page-node-id="DDLNpfAyeOWcPVr58TcFoT">✦</button>
+    <button data-go="settings" title="设置" data-page-node-id="BXea6hywNnY839tvG2tjiB">⚙</button>
+  </nav>
+
+  <!-- 全局脚本 -->
+  <script src="js/storage.js"></script>
+  <script src="js/moon.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/veil.js"></script>
+  <script src="js/voice.js"></script>
+  <script src="js/onboarding.js"></script>
+  <script src="js/dreams.js"></script>
+  <script src="js/views.js"></script>
+  <script src="js/magic.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

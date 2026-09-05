@@ -1,0 +1,441 @@
+/* ============================================================
+   枕梦索 · 组件库
+   按钮、卡片、输入框、选项、徽章、导航
+   ============================================================ */
+
+/* ===================== 按钮 ===================== */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-pure);
+  background: var(--card-2);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  overflow: hidden;
+  isolation: isolate;
+  transition: all var(--dur-mid) var(--ease-dream);
+  user-select: none;
+}
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--violet-core), var(--aurora-pink));
+  opacity: 0;
+  transition: opacity var(--dur-mid) var(--ease-dream);
+  z-index: -1;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-glow);
+  box-shadow: 0 10px 30px -10px rgba(124, 92, 255, 0.5);
+}
+.btn:hover::before { opacity: 1; }
+.btn:active { transform: translateY(0); }
+
+.btn-primary {
+  background: var(--text-pure);
+  color: var(--night-deep);
+  border-color: transparent;
+  font-weight: 600;
+}
+.btn-primary::before {
+  background: linear-gradient(135deg, var(--aurora-gold), var(--violet-pale));
+}
+.btn-primary:hover {
+  box-shadow: 0 12px 36px -8px rgba(255, 213, 128, 0.35);
+}
+
+.btn-ghost {
+  background: transparent;
+  border-color: var(--border-soft);
+  color: var(--text-mid);
+}
+.btn-ghost:hover {
+  background: var(--card-hover);
+  border-color: var(--border-mid);
+  color: var(--text-pure);
+}
+
+.btn-icon {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.btn-arrow::after {
+  content: '→';
+  font-size: 16px;
+  transition: transform var(--dur-quick) var(--ease-dream);
+}
+.btn-arrow:hover::after { transform: translateX(4px); }
+
+/* 按钮发光涟漪 */
+.btn .ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.4), transparent 70%);
+  pointer-events: none;
+  transform: scale(0);
+  animation: ripple-out 0.8s var(--ease-dream);
+}
+@keyframes ripple-out {
+  to { transform: scale(2.5); opacity: 0; }
+}
+
+/* ===================== 卡片 ===================== */
+.card {
+  position: relative;
+  background: var(--card-1);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-lg);
+  padding: 24px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: all var(--dur-mid) var(--ease-dream);
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--r-lg);
+  padding: 1px;
+  background: linear-gradient(135deg, transparent 30%, rgba(167, 139, 250, 0.4), transparent 70%);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity var(--dur-mid) var(--ease-dream);
+  pointer-events: none;
+}
+.card:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-mid);
+  background: var(--card-2);
+  box-shadow: var(--shadow-deep);
+}
+.card:hover::before { opacity: 1; }
+
+.card-glass {
+  background: rgba(20, 16, 60, 0.4);
+  backdrop-filter: blur(30px) saturate(180%);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
+}
+
+/* ===================== 选项卡 ===================== */
+.option-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 24px;
+  background: var(--card-1);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-md);
+  cursor: pointer;
+  transition: all var(--dur-mid) var(--ease-dream);
+  position: relative;
+  overflow: hidden;
+}
+.option-row .opt-emoji {
+  font-size: 22px;
+  width: 36px;
+  text-align: center;
+  filter: drop-shadow(0 0 8px rgba(167, 139, 250, 0.5));
+  transition: transform var(--dur-mid) var(--ease-dream);
+}
+.option-row .opt-label {
+  flex: 1;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-bright);
+}
+.option-row .opt-sub {
+  display: block;
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-top: 2px;
+  font-weight: 400;
+}
+.option-row .opt-radio {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--text-faint);
+  position: relative;
+  flex-shrink: 0;
+  transition: all var(--dur-mid) var(--ease-dream);
+}
+.option-row .opt-radio::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--violet-core), var(--aurora-pink));
+  transform: scale(0);
+  transition: transform var(--dur-mid) var(--ease-dream);
+}
+.option-row:hover {
+  background: var(--card-hover);
+  border-color: var(--border-mid);
+  transform: translateX(4px);
+}
+.option-row:hover .opt-emoji {
+  transform: scale(1.15) rotate(-5deg);
+}
+.option-row:hover .opt-radio { border-color: var(--violet-glow); }
+.option-row.is-selected {
+  background: var(--card-active);
+  border-color: var(--border-glow);
+  box-shadow: 0 0 24px -8px rgba(124, 92, 255, 0.5);
+}
+.option-row.is-selected .opt-radio { border-color: var(--violet-glow); }
+.option-row.is-selected .opt-radio::after { transform: scale(1); }
+.option-row.is-selected .opt-emoji { transform: scale(1.1); }
+
+/* 选中时的星云扫光 */
+.option-row.is-selected::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(157, 128, 255, 0.18), transparent);
+  transform: translateX(-100%);
+  animation: shimmer-pass 1.4s var(--ease-dream);
+  pointer-events: none;
+}
+@keyframes shimmer-pass {
+  to { transform: translateX(100%); }
+}
+
+/* ===================== 输入框 ===================== */
+.input-wrap {
+  position: relative;
+  margin: 16px 0;
+}
+.input-wrap input,
+.input-wrap textarea {
+  width: 100%;
+  padding: 22px 24px;
+  background: var(--card-1);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-md);
+  color: var(--text-pure);
+  font-size: 16px;
+  transition: all var(--dur-mid) var(--ease-dream);
+  font-family: inherit;
+}
+.input-wrap textarea {
+  resize: vertical;
+  min-height: 200px;
+  line-height: 1.8;
+}
+.input-wrap input:focus,
+.input-wrap textarea:focus {
+  border-color: var(--border-glow);
+  background: var(--card-2);
+  box-shadow: 0 0 0 4px rgba(124, 92, 255, 0.12), 0 12px 36px -16px rgba(124, 92, 255, 0.4);
+}
+.input-wrap input::placeholder,
+.input-wrap textarea::placeholder {
+  color: var(--text-dim);
+  font-style: italic;
+}
+/* 焦点时的金色描边光斑 */
+.input-wrap::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: var(--r-md);
+  background: conic-gradient(from 0deg, var(--violet-core), var(--aurora-pink), var(--aurora-gold), var(--violet-core));
+  opacity: 0;
+  z-index: -1;
+  filter: blur(2px);
+  transition: opacity var(--dur-mid) var(--ease-dream);
+}
+.input-wrap:focus-within::after { opacity: 0.18; }
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===================== 徽章 ===================== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  border-radius: var(--r-pill);
+  background: var(--card-2);
+  border: 1px solid var(--border-soft);
+  color: var(--text-mid);
+  font-family: var(--font-display);
+  font-style: italic;
+}
+.badge-violet {
+  background: linear-gradient(135deg, rgba(124, 92, 255, 0.2), rgba(255, 143, 184, 0.15));
+  border-color: rgba(157, 128, 255, 0.35);
+  color: var(--violet-pale);
+}
+.badge-gold {
+  background: linear-gradient(135deg, rgba(255, 213, 128, 0.18), rgba(255, 143, 184, 0.1));
+  border-color: rgba(255, 213, 128, 0.4);
+  color: var(--aurora-gold);
+}
+
+/* ===================== 导航 ===================== */
+.nav {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  padding: 8px;
+  background: rgba(15, 12, 45, 0.7);
+  backdrop-filter: blur(30px) saturate(180%);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-pill);
+  box-shadow: var(--shadow-deep);
+  z-index: 90;
+}
+.nav button {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 19px;
+  color: var(--text-dim);
+  position: relative;
+  transition: all var(--dur-mid) var(--ease-dream);
+}
+.nav button:hover {
+  color: var(--text-bright);
+  background: var(--card-hover);
+  transform: translateY(-2px);
+}
+.nav button.is-active {
+  color: var(--text-pure);
+  background: linear-gradient(135deg, var(--violet-core), var(--aurora-pink));
+  box-shadow: 0 0 20px rgba(124, 92, 255, 0.5);
+}
+.nav button.is-active::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124, 92, 255, 0.35), transparent 70%);
+  z-index: -1;
+  animation: pulse 2.4s var(--ease-float) infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+/* ===================== 滑块 ===================== */
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--violet-core) 0%, var(--violet-core) var(--val, 50%), rgba(167, 139, 250, 0.15) var(--val, 50%));
+  outline: none;
+}
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--aurora-gold), var(--violet-pale));
+  cursor: pointer;
+  box-shadow: 0 0 16px rgba(255, 213, 128, 0.6), 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform var(--dur-quick) var(--ease-dream);
+}
+.slider::-webkit-slider-thumb:hover { transform: scale(1.15); }
+.slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--aurora-gold), var(--violet-pale));
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 16px rgba(255, 213, 128, 0.6);
+}
+
+/* ===================== 涟漪光圈 ===================== */
+.aura-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid var(--border-mid);
+  pointer-events: none;
+  animation: aura-expand 2.4s var(--ease-dream) infinite;
+}
+@keyframes aura-expand {
+  from { transform: scale(0.4); opacity: 0.8; }
+  to   { transform: scale(2.4); opacity: 0; }
+}
+
+/* ===================== 工具类 ===================== */
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.flex-between { display: flex; align-items: center; justify-content: space-between; }
+.flex-col { display: flex; flex-direction: column; }
+.gap-1 { gap: 4px; } .gap-2 { gap: 8px; } .gap-3 { gap: 12px; }
+.gap-4 { gap: 16px; } .gap-6 { gap: 24px; } .gap-8 { gap: 32px; }
+.text-center { text-align: center; }
+.mt-1 { margin-top: 4px; } .mt-2 { margin-top: 8px; } .mt-4 { margin-top: 16px; }
+.mt-6 { margin-top: 24px; } .mt-8 { margin-top: 32px; } .mt-12 { margin-top: 48px; }
+.mb-1 { margin-bottom: 4px; } .mb-2 { margin-bottom: 8px; } .mb-4 { margin-bottom: 16px; }
+.mb-6 { margin-bottom: 24px; }
+.opacity-60 { opacity: 0.6; } .opacity-80 { opacity: 0.8; }
+
+/* Skip button (top-right) */
+.skip {
+  position: absolute;
+  top: 50px;
+  right: clamp(20px, 5vw, 60px);
+  font-size: 13px;
+  color: var(--text-dim);
+  padding: 8px 16px;
+  border-radius: var(--r-pill);
+  transition: all var(--dur-quick) var(--ease-dream);
+  z-index: 5;
+}
+.skip:hover { color: var(--text-pure); background: var(--card-hover); }
+
+/* 跳过链接 */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-dim);
+  font-size: 13px;
+  padding: 8px 14px;
+  border-radius: var(--r-pill);
+  transition: all var(--dur-quick) var(--ease-dream);
+}
+.back-link:hover {
+  color: var(--text-pure);
+  background: var(--card-hover);
+}
+.back-link::before {
+  content: '←';
+  transition: transform var(--dur-quick) var(--ease-dream);
+}
+.back-link:hover::before { transform: translateX(-3px); }

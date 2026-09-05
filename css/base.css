@@ -1,0 +1,271 @@
+/* ============================================================
+   枕梦索 · 基础布局与重置
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  color: var(--text-bright);
+  background: var(--night-abyss);
+  overflow-x: hidden;
+  min-height: 100vh;
+  letter-spacing: 0.01em;
+  line-height: 1.55;
+  position: relative;
+}
+
+button, input, textarea, select {
+  font-family: inherit;
+  color: inherit;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+button { cursor: pointer; }
+button:disabled { cursor: not-allowed; opacity: 0.5; }
+button:focus-visible, [role="button"]:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--violet-pale);
+  outline-offset: 4px;
+}
+[aria-disabled="true"] { cursor: not-allowed; opacity: 0.4; }
+#writeStatus { min-height: 1.5em; font-size: 13px; margin-bottom: 12px; }
+.write-header { gap: 12px; flex-wrap: wrap; }
+.voice-clip { flex-wrap: wrap; }
+
+a { color: inherit; text-decoration: none; }
+
+img, svg { display: block; max-width: 100%; }
+
+ul, ol { list-style: none; }
+
+::selection { background: rgba(157, 128, 255, 0.45); color: var(--text-pure); }
+
+/* ---- 全局星空背景 ---- */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(124, 92, 255, 0.18), transparent 50%),
+    radial-gradient(ellipse at 80% 100%, rgba(109, 169, 255, 0.12), transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(20, 17, 62, 1), rgba(6, 5, 26, 1));
+  z-index: -3;
+  pointer-events: none;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      180deg,
+      transparent 0,
+      transparent 3px,
+      rgba(255, 255, 255, 0.012) 3px,
+      rgba(255, 255, 255, 0.012) 4px
+    );
+  z-index: -1;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  opacity: 0.4;
+}
+
+/* ---- 星空画布 ---- */
+#starfield {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+}
+
+/* ---- 应用容器 ---- */
+.app {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  isolation: isolate;
+}
+
+/* ---- 顶部窗口装饰条（macOS chrome） ---- */
+.chrome-bar {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  padding: 0 18px;
+  gap: 8px;
+  background: linear-gradient(180deg, rgba(15, 12, 45, 0.6), transparent);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.chrome-bar::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 18px;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--violet-core), var(--aurora-pink));
+  border-radius: 2px;
+  opacity: 0.7;
+}
+.chrome-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--card-2);
+  transition: background var(--dur-quick) var(--ease-wisp);
+}
+.chrome-dot:hover { background: var(--violet-core); }
+.chrome-title {
+  margin-left: 12px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  color: var(--text-mid);
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  font-style: italic;
+}
+
+/* ---- 进度指示器 ---- */
+.dream-progress {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  padding: 16px 0 8px;
+  position: relative;
+  width: fit-content;
+  margin: 0 auto;
+}
+.dream-progress span {
+  width: 36px;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(167, 139, 250, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+/* 行走的星：随进度滑动 */
+.dream-progress .pstar {
+  position: absolute;
+  top: 50%;
+  left: calc(var(--p, 0.1) * 100%);
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: auto;
+  background: none;
+  overflow: visible;
+  font-size: 13px;
+  color: var(--aurora-gold);
+  filter: drop-shadow(0 0 8px rgba(255, 213, 128, 0.9));
+  transition: left 0.9s var(--ease-dream);
+  animation: twinkle 2.2s var(--ease-float) infinite;
+  pointer-events: none;
+}
+.dream-progress span.done::after,
+.dream-progress span.active::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--violet-core), var(--aurora-pink));
+  border-radius: 2px;
+  transform-origin: left;
+  animation: progress-flow var(--dur-lullaby) var(--ease-dream);
+}
+.dream-progress span.active::after {
+  animation: progress-flow var(--dur-lullaby) var(--ease-dream) infinite alternate;
+}
+@keyframes progress-flow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* ---- 视图容器 ----
+   非激活视图脱离文档流（不占高度），
+   激活视图回到文档流，页面可自然滚动 */
+.view {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  min-height: 100vh;
+  padding: 24px clamp(20px, 5vw, 60px) 120px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+  visibility: hidden;
+  transition: opacity var(--dur-slow) var(--ease-dream),
+              transform var(--dur-slow) var(--ease-dream),
+              visibility 0s linear var(--dur-slow);
+}
+.view.is-active {
+  position: relative;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+  visibility: visible;
+  transition: opacity var(--dur-slow) var(--ease-dream),
+              transform var(--dur-slow) var(--ease-dream);
+}
+
+/* ---- 文本基类 ---- */
+.h-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: var(--text-pure);
+}
+.h-1 { font-size: clamp(40px, 6vw, 72px); }
+.h-2 { font-size: clamp(28px, 4vw, 42px); }
+.h-3 { font-size: clamp(20px, 2.4vw, 26px); }
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--violet-pale);
+  font-weight: 500;
+  font-style: italic;
+}
+
+.body-text {
+  color: var(--text-mid);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.dim { color: var(--text-dim); }
+
+/* ---- 焦点管理 ---- */
+:focus-visible {
+  outline: 2px solid var(--violet-glow);
+  outline-offset: 4px;
+  border-radius: var(--r-sm);
+}
+
+/* ---- 减少动效偏好 ---- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

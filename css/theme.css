@@ -1,0 +1,86 @@
+/* ============================================================
+   枕梦索 · 主题系统
+   灵感：深夜、星空、梦境、月光、水彩烟雾
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500;600&display=swap');
+
+:root {
+  /* ---- 夜空 ---- */
+  --night-abyss:   #06051A;
+  --night-deep:    #0B0826;
+  --night-mid:     #14113E;
+  --night-soft:    #1E1858;
+  --night-haze:    #2A2270;
+
+  /* ---- 极光 ---- */
+  --violet-core:   #7C5CFF;
+  --violet-glow:   #9D80FF;
+  --violet-pale:   #C7B8FF;
+  --violet-dream:  #B197FC;
+
+  --aurora-pink:   #FF8FB8;
+  --aurora-blue:   #6DA9FF;
+  --aurora-teal:   #5EE2D6;
+  --aurora-gold:   #FFD580;
+  --aurora-rose:   #F5A0C2;
+
+  /* ---- 文本 ---- */
+  --text-pure:     #F5F2FF;
+  --text-bright:   #E8E2FF;
+  --text-mid:      #B0A8E8;
+  --text-dim:      #7A739E;
+  --text-faint:    #4A4670;
+
+  /* ---- 表面 ---- */
+  --card-1:        rgba(30, 24, 88, 0.42);
+  --card-2:        rgba(20, 16, 60, 0.55);
+  --card-3:        rgba(45, 35, 110, 0.35);
+  --card-hover:    rgba(124, 92, 255, 0.12);
+  --card-active:   rgba(124, 92, 255, 0.22);
+
+  --border-soft:   rgba(167, 139, 250, 0.12);
+  --border-mid:    rgba(167, 139, 250, 0.22);
+  --border-glow:   rgba(157, 128, 255, 0.45);
+
+  /* ---- 动效 ---- */
+  --ease-dream:    cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-wisp:     cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-float:    cubic-bezier(0.45, 0, 0.55, 1);
+
+  --dur-quick:     220ms;
+  --dur-mid:       480ms;
+  --dur-slow:      900ms;
+  --dur-lullaby:   1400ms;
+
+  /* ---- 尺寸 ---- */
+  --r-sm:          10px;
+  --r-md:          16px;
+  --r-lg:          24px;
+  --r-xl:          32px;
+  --r-pill:        999px;
+
+  --shadow-glow:   0 0 32px rgba(124, 92, 255, 0.35);
+  --shadow-soft:   0 18px 60px -20px rgba(0, 0, 30, 0.6);
+  --shadow-deep:   0 30px 80px -25px rgba(0, 0, 30, 0.8);
+
+  /* ---- 字体 ---- */
+  --font-display:  'Fraunces', 'Noto Serif SC', 'PingFang SC', serif;
+  --font-body:     'Inter', 'Noto Sans SC', 'PingFang SC', -apple-system, sans-serif;
+  --font-mono:     'SF Mono', 'Cascadia Code', 'Fira Code', monospace;
+}
+
+/* ---- 颜色模式：可切换"清晨薄雾"等 ---- */
+[data-theme="dawn"] {
+  --night-abyss:   #1A1530;
+  --night-deep:    #2A2455;
+  --night-mid:     #3F3578;
+  --text-pure:     #FFFBE8;
+  --aurora-pink:   #FFB89A;
+  --aurora-gold:   #FFE0A0;
+}
+[data-theme="deep"] {
+  --night-abyss:   #03020F;
+  --night-deep:    #08051F;
+  --violet-core:   #5B3FFF;
+}
